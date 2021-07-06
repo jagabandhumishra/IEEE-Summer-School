@@ -1,0 +1,157 @@
+### Files icon
+	Home	Desktop	Trash
+	samudra	Documents	...	Downloads
+
+Home	Desktop	...
+	# Desktop is a folder within the home folder
+	# Desktop is a subdirectory of home
+	
+
+	Operating systems
+Windows			Linux
+-----------------------------------
+folder			directory
+				### file_system_linux.jpg
+C:			/		root directory
+C:\user\samudra		/home/samudra	home directory
+			/home/samudra/Desktop
+
+GUI			CLI
+### Terminal				
+
+### commands	------
+date
+# PS1='$ '		# ~/.bashrc
+	
+# WARNING:	control-c kills the current process
+#		it does NOT copy text
+# abbreviation of commands: SMS:	  yr === your
+pwd	# case sensitive, no spaces
+ls	cd Desktop	ls	# list, change directory
+pwd	cd ..	pwd	
+cd /home/chief/Desktop		# ===	cd ~/Desktop
+ls -l	# switches/options are preceded by hypen '-'
+ls /home/samudra/Desktop	# (optional) argument
+# history
+# pause; clear
+
+
+
+echo "hello world!"
+# output redirection
+pwd; ls
+echo "hello world!" > junk.txt
+ls
+cat junk.txt
+more junk.txt
+file junk.txt
+rm junk.txt
+
+# Use meaningful names to files and variables
+# No space within filename; use underscore '_'
+mkdir junk_dir
+ls
+rmdir junk_dir
+
+
+# Shell variables
+ngram=3
+echo $ngram
+sponsor="IEEE society"
+echo "This workshop is sponsored by $sponsor. Welcome!"
+
+# Environmental variables  === global variables in C
+pwd
+echo $PWD
+#export NEW_VAR="Testing export"
+
+#-------------------------
+# Store the output of a command in a variable
+files=$(ls)
+echo $files		# contrast with ls
+
+# for	-----	repeat an action for items in a list 
+for x in $files; do
+  echo $x
+done
+
+for x in $files; do echo $x; done
+for x in $files; do echo $x; date; done
+
+### Count the no. of files in a directory
+# Output redirection
+echo "hello world 1"  > temp.txt
+cat temp.txt
+
+# pipe	-----	=== output redirection
+cat temp.txt | wc
+cat temp.txt | wc -w
+# store the output of a command in a variable
+nwords=$(cat temp.txt  | wc -w)
+echo $nwords
+
+ls
+ls | wc
+ls linux_bash_210706 | wc
+ls linux_bash_210706 | wc -w
+ls ~/Desktop/linux_bash_210706 | wc -w
+
+# Count the no. of files in each directory
+echo $files
+for x in $files; do
+  ls $x | wc -l;
+done
+
+for x in $files; do
+  echo -n "$x: "
+  ls $x | wc -l;
+done
+
+for x in $files; do
+  printf "$x: \t\t"
+  ls $x | wc -l;
+done
+
+
+# grep	------  === filtering
+ls linux_bash_210706
+ls linux_bash_210706  | grep 6
+ls linux_bash_210706  | grep run
+ls linux_bash_210706  | grep .sh
+
+
+cd linux_bash_210706
+
+# awk	-----	column editing
+cat numbers5_HN.txt
+cat numbers5_HN.txt | awk '{printf "%s\n", $1}'
+cat numbers5_HN.txt | awk '{printf "%s\n", $3}'
+cat numbers5_HN.txt | awk '{printf "3rd word is %s\n", $3}'
+
+cat numbers5_HN.txt | awk '{printf "%s/%s.wav\n", "/home/samudra/wav/HN", $1}'
+
+wav_dir="/home/samudra/wav/hindiDigits"
+cat numbers5_HN.txt | awk '{printf "%s/%s.wav\n", "'$wav_dir'", $1}'
+
+cat numbers5_HN.txt | awk '{printf "%s\t%s/%s.wav\n", $1, "'$wav_dir'", $1}'
+
+# Output redirection	----	store in a file
+ls
+cat numbers5_HN.txt | awk '{printf "%s\t%s/%s.wav\n", $1, "'$wav_dir'", $1}' > wav.scp
+ls
+
+# you can process any file anywhere on the filesystem
+cd ..
+cat linux_bash_210706/numbers5_HN.txt | awk '{printf "%s\t%s/%s.wav\n", $1, "'$wav_dir'", $1}' > wav.scp
+
+
+
+# bash script	------
+### compiled Vs interpretable languages
+# bash, csh, tcsh	awk, perl, python, matlab
+#!/bin/bash			# chmod a+rx 
+
+cat test1.sh
+
+test1.sh
+
