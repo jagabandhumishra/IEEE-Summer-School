@@ -1,1 +1,1 @@
-# IEEE-Summer-School: ASR
+# IEEE-Summer-School: Indic ASR
