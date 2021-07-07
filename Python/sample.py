@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-a=np.array(range(10))
-b=a*3+7
-print(b)
-plt.plot(a,b) 
+x=np.array(range(10))
+y=x*5+3
 
-#%%
+print(x)
+print(y)
+
+plt.plot(x,y)
+plt.show()
